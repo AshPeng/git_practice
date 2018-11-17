@@ -1,5 +1,3 @@
-import time
-
 class Art:
   
   def __init__(self, artist, title, medium, year, owner):
@@ -30,7 +28,7 @@ class Marketplace:
       for listing in self.listings:
         print(listing)
     else:
-      print("NO LISTINGS AT THE MOMENT")
+      print("No listings at the moment.")
       
 
 
@@ -55,6 +53,12 @@ class Client:
       self.location = location
     else:
       self.location = "Private Collection"
+
+  def __repr__(self):
+    if self.is_museum:
+      return("This client is a museum.")
+    else:
+      return("This client is a person.")   
       
   def sell_artwork(self, artwork, price):
     if self != artwork.owner:
@@ -71,58 +75,36 @@ class Client:
         veneer.remove_listing(listing)
     
       
-print("CREATING \"VENEER\"...\n")
+print("\n\"VENEER\" CREATED AS MARKET")
 veneer = Marketplace() 
-time.sleep(2)
 
-print("GENERATING \"EDYTTA\" AS CLIENT...\n")
+print("\"EDYTTA\" CREATED AS CLIENT")
 edytta = Client("Edytta Halpirt", "None", False)
-time.sleep(1.5)
 
-print("INITIALIZATION OF \"GIRL WITH MANDOLIN\" AS ART OBJECT...\n\n")
+print("\"GIRL WITH MANDOLIN\" CREATED AS ART OBJECT")
 girl_with_mandolin = Art("Picasso, Pablo", "Girl with a Mandolin (Fanny Tellier)", "oil on canvas", "1910", edytta)
-time.sleep(3)
-
-print("ITS PARAMETERS:\n")
-time.sleep(0.3)
+print("\nCurrent artwork information:")
 print(girl_with_mandolin)
-time.sleep(5)
+print("\nCurrent market listings:")
+veneer.show_listings()
 
-print("\n\n\n\nUploading artwork for sale.")
-time.sleep(2)
-print("The price is")
-time.sleep(0.2)
-print("$6 MILLION")
-time.sleep(0.2)
-print("U.S. dollars.\n\n")
-time.sleep(3)
+
+print("\nArtwork uploaded for sale.")
+print("The price is \"$6 MILLION\" U.S. dollars.")
 edytta.sell_artwork(girl_with_mandolin, "$6M(USD)")
 
-print("PRINTING CURRENT MARKET...\n")
-time.sleep(0.5)
+print("\nCurrent market listings:")
 veneer.show_listings()
-time.sleep(1)
 
-print("Waiting for client...\n\n")
-time.sleep(3)
-print("Still waiting... ...\n\n\n\n")
-time.sleep(7)
-print("CLIENT ARRIVED.\n")
-time.sleep(1)
-print("HER NAME IS MOMA.")
+print("\nWaiting for client.")
+print("\nA client arrived.")
+print("Her name is \"The MOMA\".")
 moma = Client("The MOMA", "New York", True)
-time.sleep(1)
-
-print("MOMA BUYING ARTWORK...")
+print(moma)
+print("Artwork purchased by The Moma.")
 moma.buy_artwork(girl_with_mandolin)
-time.sleep(2)
-print("\nPURCHASE COMPLETE.")
-time.sleep(1)
 
-print("\nREFRESHING MARKET INFORMATION...")
-time.sleep(0.7)
-print("REFRESH COMPLETE.")
+print("\nCurrent artwork information:")
 print(girl_with_mandolin)
-time.sleep(0.3)
-print("CURRENT MARKET:")
+print("\nCurrent market listings:")
 veneer.show_listings()
